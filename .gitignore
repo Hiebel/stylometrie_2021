@@ -1,3 +1,6 @@
 *.pyc
 french-docs/
 articles.json
+.ipynb_checkpoints/
+articlesTags.json
+test.png
