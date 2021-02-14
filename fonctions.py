@@ -107,8 +107,6 @@ def afficher_titres_hasard(taille_echantillons, dictionnaire):
 
     for i in range(len(echantillons)):
         print("Cluster %s : %s articles" % (i, len(dictionnaire[i])))
-        #for titre in echantillons[i]:
-            #print(titre)
         for j in range(len(echantillons[i])):
             print(echantillons[i][j])
             print(" ".join(tags[i][j]))
@@ -123,7 +121,8 @@ def dimensions_clusters(model, vectorizer):
     for i in range(model.n_clusters):
         print("Cluster %d:" % i)
         for ind in order_centroids[i, :10]:
-            print(' (%s) ' % terms[ind].upper(), end='')
+            print('(%s)' % terms[ind].upper(), end=' | ')
+        print()
         print("-"*10)
 
 # création du graphique de l'analyse en composantes principales
