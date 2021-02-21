@@ -91,6 +91,7 @@ def dic_complet(X, predictions, liste_tags, liste_titres):
         dic_res[num_cluster].append((titre, tags, vecteur))
     return dic_res
 
+
 # affichier des titres d'articles au hasard parmis chaque cluster
 # taille_echantillons : nombre de titres par cluster
 # dictionnaire : contient pour chaque cluster la liste d'articles avec leurs tags et vecteurs correspondants
