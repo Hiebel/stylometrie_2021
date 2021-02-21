@@ -20,7 +20,7 @@ for fic in glob.glob("french-docs/2009/*/*/*"):
 # ajout des titres des fichiers du dossier 2008 dans la variable dic
 for path in glob.glob('french-docs/2008/*/*/*/*'):
     f = lire_fichier(path)
-    soup  = BeautifulSoup(f)
+    soup  = BeautifulSoup(f, features="lxml")
     titre = soup.p.text 	# le titre correspond à la première balise <p>
     dic[path] = titre
     

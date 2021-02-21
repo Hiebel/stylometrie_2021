@@ -1,4 +1,5 @@
 import json
+import csv
 from sklearn.cluster import KMeans
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.feature_extraction.text import TfidfVectorizer
@@ -117,13 +118,18 @@ def dimensions_clusters(model, vectorizer):
     order_centroids = model.cluster_centers_.argsort()[:, ::-1]
 
     terms = vectorizer.get_feature_names()
-
-    for i in range(model.n_clusters):
-        print("Cluster %d:" % i)
-        for ind in order_centroids[i, :10]:
-            print('(%s)' % terms[ind].upper(), end=' | ')
-        print()
-        print("-"*10)
+    with open("dimensions_clusters.csv", "w", encoding="utf-8") as csvfile:
+        spamwriter = csv.writer(csvfile, delimiter=',',
+                            quotechar='|', quoting=csv.QUOTE_MINIMAL)
+        for i in range(model.n_clusters):
+            print("Cluster %d:" % i)
+            row = []
+            for ind in order_centroids[i, :10]:
+                print('(%s)' % terms[ind].upper(), end=' | ')
+                row.append(terms[ind].upper())
+            spamwriter.writerow(row)
+            print()
+            print("-"*10)
 
 # création du graphique de l'analyse en composantes principales
 # X : liste des vecteurs
