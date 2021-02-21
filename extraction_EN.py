@@ -14,6 +14,9 @@ for k, v in titres.items():
     for ent in doc.ents: 
         list_ent.append(ent.text)
         list_etiq.append(ent.label_)
-    dic_entites.setdefault(k, [list_ent, list_etiq])
+    dic_entites[k] = []
+    dic_entites[k].append(list_ent)
+    dic_entites[k].append(list_etiq)
+    dic_entites[k].append(v)
     
-ecrire_json('entites_nommes.json', dic_entites)
+ecrire_json('entites_nommees.json', dic_entites)

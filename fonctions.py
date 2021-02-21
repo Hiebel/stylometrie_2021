@@ -40,7 +40,7 @@ def effectifs_clusters(model):
 # création d'un nouveau dictionnaire pour faciliter les traitements
 # le dictionnaire d'entrée contient des tuples (mot, tag)
 # on souhaite séparer d'un côté les mots, de l'autre les tags
-def reorganiser_dico(dic):
+def reorganiser_POS(dic):
     new_dic = {}
     for k, v in dic.items():
         mots = []
