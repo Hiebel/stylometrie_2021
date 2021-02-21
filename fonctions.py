@@ -1,6 +1,7 @@
 import json
 from sklearn.cluster import KMeans
 from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.feature_extraction.text import TfidfVectorizer
 
 from random import randint
         
@@ -55,8 +56,11 @@ def reorganiser_dico(dic):
 
 # Vectorisation des documents
 # liste_tags : tags des documents
-def creer_X(liste_tags):
-    V = CountVectorizer()
+# ngram_min : taille minimale des ngrams
+# ngram_max : taille maximale des ngrams
+def creer_X(liste_tags, ngram_min, ngram_max):
+    #V = CountVectorizer()
+    V = TfidfVectorizer(ngram_range=(ngram_min,ngram_max))
     tokenized_tags = [" ".join(x) for x in liste_tags]
     X = V.fit_transform(tokenized_tags).toarray()
     return X, V
@@ -67,7 +71,6 @@ def creer_X(liste_tags):
 def creer_model_KM(nb_clusters, X):
     model = KMeans(n_clusters=nb_clusters)
     model.fit(X)
-    model.predict(X)
     return model
 
 # création d'un dictionnaire contenant pour chaque cluster la liste d'articles avec leurs tags et vecteurs correspondants
@@ -92,17 +95,21 @@ def dic_complet(X, predictions, liste_tags, liste_titres):
 # dictionnaire : contient pour chaque cluster la liste d'articles avec leurs tags et vecteurs correspondants
 def afficher_titres_hasard(taille_echantillons, dictionnaire):
     echantillons = []
+    tags = []
     
     for i in range(len(dictionnaire)):
         echantillons.append([])
+        tags.append([])
         for j in range(taille_echantillons):
             indice = randint(0, len(dictionnaire[i])-1)
-            echantillons[i].append(dictionnaire[i][indice][:1])
+            echantillons[i].append(dictionnaire[i][indice][0])
+            tags[i].append(dictionnaire[i][indice][1])
 
     for i in range(len(echantillons)):
         print("Cluster %s : %s articles" % (i, len(dictionnaire[i])))
-        for titre in echantillons[i]:
-            print(titre)
+        for j in range(len(echantillons[i])):
+            print(echantillons[i][j])
+            print(" ".join(tags[i][j]))
         print("-"*10)
 
 # afficher les dimensions les plus caractéristiques de chaque cluster
@@ -112,10 +119,11 @@ def dimensions_clusters(model, vectorizer):
     terms = vectorizer.get_feature_names()
 
     for i in range(model.n_clusters):
-        print("Cluster %d:" % i, end='')
+        print("Cluster %d:" % i)
         for ind in order_centroids[i, :10]:
-            print(' %s' % terms[ind].upper(), end='')
+            print('(%s)' % terms[ind].upper(), end=' | ')
         print()
+        print("-"*10)
 
 # création du graphique de l'analyse en composantes principales
 # X : liste des vecteurs

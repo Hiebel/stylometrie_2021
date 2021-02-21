@@ -17,4 +17,4 @@ for path, titre in dicTitres.items():
     tags = nltk.pos_tag(tokens) # tags des tokens
     dicTag.setdefault(path, [titre, tags])
 
-ecrire_json('articlesTags.json', dicTag)
+ecrire_json('articlesTags_nltk.json', dicTag)
