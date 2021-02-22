@@ -80,15 +80,16 @@ def creer_model_KM(nb_clusters, X):
 # liste_tags : liste des tags des articles
 # liste_titres : liste titres des articles
 # les indices entre toutes les listes correspondent
-def dic_complet(X, predictions, liste_tags, liste_titres):
+def dic_complet(X, predictions, liste_tags, liste_titres, liste_journaux):
     dic_res = {}
     for i in range(len(X)):
         num_cluster = predictions[i]
         titre = liste_titres[i]
         tags = liste_tags[i]
         vecteur = X[i]
+        journal = liste_journaux[i]
         dic_res.setdefault(num_cluster,  [])
-        dic_res[num_cluster].append((titre, tags, vecteur))
+        dic_res[num_cluster].append((titre, tags, vecteur, journal))
     return dic_res
 
 
@@ -98,7 +99,7 @@ def dic_complet(X, predictions, liste_tags, liste_titres):
 def afficher_titres_hasard(taille_echantillons, dictionnaire):
     echantillons = []
     tags = []
-    
+    journaux = []
     for i in range(len(dictionnaire)):
         echantillons.append([])
         tags.append([])
@@ -106,12 +107,14 @@ def afficher_titres_hasard(taille_echantillons, dictionnaire):
             indice = randint(0, len(dictionnaire[i])-1)
             echantillons[i].append(dictionnaire[i][indice][0])
             tags[i].append(dictionnaire[i][indice][1])
+            journaux.append(dictionnaire[i][indice][3])
 
     for i in range(len(echantillons)):
         print("Cluster %s : %s articles" % (i, len(dictionnaire[i])))
         for j in range(len(echantillons[i])):
             print(echantillons[i][j])
             print(" ".join(tags[i][j]))
+            print(journaux[i])
         print("-"*10)
 
 # afficher les dimensions les plus caractéristiques de chaque cluster
@@ -175,4 +178,14 @@ def tracer_dendrogram(model):
     plot_dendrogram(model, truncate_mode='level', p=2)
     plt.xlabel("Nombre de documents dans le noeud")
     plt.show()
+    
+# calcul pour chaque cluster l'effectif des différents journaux
+def nb_journaux(predictions, liste_journaux):
+    effectifs_journaux = {}
+
+    for i in range(len(predictions)):
+        effectifs_journaux.setdefault(predictions[i], {})
+        effectifs_journaux[predictions[i]].setdefault(liste_journaux[i], 0)
+        effectifs_journaux[predictions[i]][liste_journaux[i]] += 1
+    return effectifs_journaux
     
