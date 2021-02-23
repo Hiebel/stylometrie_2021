@@ -9,8 +9,8 @@ dic_entites = {}
 
 for k, v in titres.items():
     doc = nlp(v)
-    list_ent = ["_"]
-    list_etiq = ["_"]
+    list_ent = []
+    list_etiq = []
     for ent in doc.ents: 
         list_ent.append(ent.text)
         list_etiq.append(ent.label_)
