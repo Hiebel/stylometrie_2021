@@ -43,7 +43,7 @@ def effectifs_clusters(model):
 def get_liste_journaux(liste_chemins):
     liste_journaux = []
 
-    for c in chemins_articles:
+    for c in liste_chemins:
         j = re.findall("_(.+)_", c)
         liste_journaux.append(j[0])
     return liste_journaux
