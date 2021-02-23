@@ -1,5 +1,6 @@
 import json
 import csv
+import re
 from sklearn.cluster import KMeans
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.feature_extraction.text import TfidfVectorizer
@@ -37,6 +38,15 @@ def effectifs_clusters(model):
         count.setdefault(l, 0)
         count[l] += 1
     return count
+
+# récupérer les noms des journaux des articles de presse contenus dans leurs chemins
+def get_liste_journaux(liste_chemins):
+    liste_journaux = []
+
+    for c in chemins_articles:
+        j = re.findall("_(.+)_", c)
+        liste_journaux.append(j[0])
+    return liste_journaux
 
 # création d'un nouveau dictionnaire pour faciliter les traitements
 # le dictionnaire d'entrée contient des tuples (mot, tag)
