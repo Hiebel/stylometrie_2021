@@ -14,6 +14,9 @@ import numpy as np
 from scipy.cluster.hierarchy import dendrogram
 from sklearn.cluster import AgglomerativeClustering
 
+from sklearn import metrics 
+from scipy.spatial.distance import cdist 
+
 # lecture d'un fichier au format json et récupération dans un dictionnaire
 def lire_json(chemin):
     with open(chemin, "r", encoding="utf-8") as fin:
@@ -215,3 +218,29 @@ def calcul_cluster_heterogeneity(model, X, predictions):
         distances[k]["nb_docs"] = len(v)
         distances[k]["distance"] = np.mean(v)
     return distances
+
+# calcul des valeurs permettant de construire la courbe en coude
+def elbow(X, plage_nb_clusters):
+    distortions = [] 
+    inertias = []
+    for k in plage_nb_clusters: 
+        kmeanModel = creer_model_KM(k, X)
+        #dic_eff = effectifs_clusters(kmeanModel)
+        distortions.append(sum(np.min(cdist(X, kmeanModel.cluster_centers_, 
+                        'euclidean'),axis=1)) / X.shape[0]) 
+        inertias.append(kmeanModel.inertia_)
+    return distortions, inertias
+
+# affichage de la méthode du coude
+def afficher_elbow(distortions, inertias, plage_nb_clusters):
+    plt.plot(plage_nb_clusters, distortions, 'bx-') 
+    plt.xlabel('Values of K') 
+    plt.ylabel('Distortion') 
+    plt.title('The Elbow Method using Distortion') 
+    plt.show()
+
+    plt.plot(plage_nb_clusters, inertias, 'bx-') 
+    plt.xlabel('Values of K') 
+    plt.ylabel('Inertia') 
+    plt.title('The Elbow Method using Inertia') 
+    plt.show()
