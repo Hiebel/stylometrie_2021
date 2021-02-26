@@ -199,3 +199,19 @@ def nb_journaux(predictions, liste_journaux):
         effectifs_journaux[predictions[i]][liste_journaux[i]] += 1
     return effectifs_journaux
     
+# calculer et renvoyer un dictionnaire qui contient pour chaque cluster du model 
+# le nombre de documents et
+# la moyenne des distances au centroid du cluster correspondant 
+def calcul_cluster_heterogeneity(model, X, predictions):
+    X_dist = model.transform(X)**2
+    rangement = {}
+    for i in range(0, len(predictions)):
+        rangement.setdefault(predictions[i], [])
+        rangement[predictions[i]].append(np.min(X_dist[i]))
+    distances = {}
+    
+    for k, v in rangement.items():
+        distances.setdefault(k, {})
+        distances[k]["nb_docs"] = len(v)
+        distances[k]["distance"] = np.mean(v)
+    return distances
