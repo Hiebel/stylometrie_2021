@@ -131,7 +131,7 @@ def afficher_titres_hasard(taille_echantillons, dictionnaire):
         print("-"*10)
 
 # afficher les dimensions les plus caractéristiques de chaque cluster
-def dimensions_clusters(model, vectorizer):
+def dimensions_clusters(model, vectorizer, nb_dim):
     order_centroids = model.cluster_centers_.argsort()[:, ::-1]
 
     terms = vectorizer.get_feature_names()
@@ -141,7 +141,7 @@ def dimensions_clusters(model, vectorizer):
         for i in range(model.n_clusters):
             print("Cluster %d:" % i)
             row = []
-            for ind in order_centroids[i, :10]:
+            for ind in order_centroids[i, :nb_dim]:
                 print('(%s)' % terms[ind].upper(), end=' | ')
                 row.append(terms[ind].upper())
             spamwriter.writerow(row)
