@@ -1,5 +1,5 @@
 # Projet RAPACE
-Regroupement d'Articles de Presse Avec des Clusters grâce aux Etiquettes
+**Regroupement d'Articles de Presse Avec des Clusters grâce aux Etiquettes
 
 Projet réalisé dans le cadre d'un cours de Master 2 par HERRENO Paola et HIEBEL Nicolas
 
@@ -30,5 +30,5 @@ Projet réalisé dans le cadre d'un cours de Master 2 par HERRENO Paola et HIEBE
 
 ### Utilisation du Stanford Tagger
 
-1. Télécharger le tagger : https://nlp.stanford.edu/software/tagger.shtml#Download
-2. 
+1. **Télécharger le tagger** : https://nlp.stanford.edu/software/tagger.shtml#Download
+2. **Modifier dans *Stanford_tagger.ipynb*** : les chemins du tagger, du modèle choisi et de java.exe sur la machine
