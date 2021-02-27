@@ -7,8 +7,7 @@ Projet réalisé dans le cadre d'un cours de Master 2 par HERRENO Paola et HIEBE
 
 ### Notebooks (.ipynb)
 
-- Clustering
-Là là là
+- Clustering : 
 - Clustering_EN
 - Elbow
 - Elbow_Experimentation
