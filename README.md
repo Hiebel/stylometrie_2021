@@ -10,11 +10,20 @@ Projet réalisé dans le cadre d'un cours de Master 2 par HERRENO Paola et HIEBE
 - Clustering
 - clustering_EN
 - Elbow
-- Elbow_experimentation
-- Fusion_experimentation
+- Elbow_Experimentation
+- Fusion_Experimentation
 - Stats_jeu_donnees
-- stanford_tagger
+- Stanford_tagger
 
 ### Scripts (.py)
 
+- extraction_EN
+- extraction_articles
+- fonctions
+- pos_tagging_nltk
+
 ### Donnees (.json)
+
+- articlesTags_Stanford
+- articlesTags_nltk
+- entites_nommees
