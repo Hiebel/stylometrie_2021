@@ -27,3 +27,7 @@ Projet réalisé dans le cadre d'un cours de Master 2 par HERRENO Paola et HIEBE
 - **articlesTags_Stanford** : Liste des titres des articles avec les tags par le tagger de Stanford
 - **articlesTags_nltk** : Liste des titres des articles avec les tags par le tagger de nltk
 - **entites_nommees** : Liste des titres des articles avec les entités nommées
+
+### Utilisation du Stanford Tagger
+
+1. Télécharger le tagger : https://nlp.stanford.edu/software/tagger.shtml#Download
