@@ -1,7 +1,7 @@
 # Projet RAPACE
 **Regroupement d'Articles de Presse Avec des Clusters grâce aux Etiquettes
 
-Projet réalisé dans le cadre d'un cours de Master 2 par HERRENO Paola et HIEBEL Nicolas
+Projet réalisé dans le cadre d'un cours de Master 2 par **HERRENO Paola** et **HIEBEL Nicolas**
 
 ## Contenu de chaque fichier
 
@@ -13,14 +13,14 @@ Projet réalisé dans le cadre d'un cours de Master 2 par HERRENO Paola et HIEBE
 - **Elbow_Experimentation** : Tests de retraits du plus gros cluster dans les calculs de la méthode du coude
 - **Fusion_Experimentation** : Tests de la combinaison des vectorisation des étiquettes et des entités nommées
 - **Stats_jeu_donnees** : Calculs de statistiques sur le corpus
-- **Stanford_tagger** : Etiquetage morphosyntaxique avec le tagger français de Stanford : génère articlesTags_Stanford.json
+- **Stanford_tagger** : Etiquetage morphosyntaxique avec le tagger français de Stanford : génère *articlesTags_Stanford.json*
 
 ### Scripts (.py)
 
-- **extraction_EN** : Script d'extraction des entités nommées : génère entites_nommees.json
+- **extraction_EN** : Script d'extraction des entités nommées : génère *entites_nommees.json*
 - **extraction_articles** : Script d'extraction des articles : génère articles.json (non présent sur le dépot)
 - **fonctions** : contient les fonctions utilisés dans les différents scripts et notebooks
-- **pos_tagging_nltk** : Script d'étiquetage morphosyntaxique avec le tagger de nltk : génère articlesTags_nltk.json
+- **pos_tagging_nltk** : Script d'étiquetage morphosyntaxique avec le tagger de nltk : génère *articlesTags_nltk.json*
 
 ### Donnees (.json)
 
