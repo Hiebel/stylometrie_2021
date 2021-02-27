@@ -31,4 +31,4 @@ Projet réalisé dans le cadre d'un cours de Master 2 par **HERRENO Paola** et *
 ### Utilisation du Stanford Tagger
 
 1. **Télécharger le tagger** : [Site du tagger](https://nlp.stanford.edu/software/tagger.shtml#Download)
-2. **Modifier dans *Stanford_tagger.ipynb*** : les chemins du tagger, du modèle choisi et de java.exe sur la machine
+2. **Modifier dans *Stanford_tagger.ipynb*** : les chemins du tagger, du modèle choisi et de `java.exe` sur la machine
